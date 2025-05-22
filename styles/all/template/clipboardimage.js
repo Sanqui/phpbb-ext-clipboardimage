@@ -112,6 +112,9 @@
 	phpbb.plupload.uploader.bind('FileUploaded', function (_, file, response) {
 		// Make sure this image comes from the clipboard.
 		// Otherwise do not inline the attachment.
+		if (!images) {
+			return;
+		}
 		let clipboardImg = images.find(function (img) {
 			return img.name === file.name && img.size === file.origSize;
 		});
